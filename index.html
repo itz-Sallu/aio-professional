@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AIO PROFESSIONAL PRODUCT'S</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #ffffff;
+    --muted:#6b7280;
+    --accent1:#ff3fa8;
+    --accent2:#ff8a3d;
+    --card-bg: #fff;
+    --price:#0f7a4a;
+    --shadow: 0 10px 30px rgba(2,6,23,0.08);
+    --overlay: rgba(4,8,6,0.6);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:#111}
+  .site{max-width:1100px;margin:0 auto;padding:18px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px}
+  .sitename{font-weight:800;line-height:1}
+  .sitename small{display:block;font-weight:600;font-size:12px;color:var(--muted)}
+  nav{display:flex;gap:8px;align-items:center}
+  .btn{padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;font-weight:700;text-decoration:none}
+  .hero{margin-top:18px;padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.9),#fff);box-shadow:var(--shadow)}
+  .hero h1{margin:0;font-size:24px}
+  .hero p{margin:6px 0 0;color:var(--muted)}
+  /* grid: mobile-first */
+  .section-title{margin:20px 0 8px;font-size:20px;font-weight:700}
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr); /* MOBILE: 2 per row */
+    gap:14px;
+    align-items:start;
+  }
+
+  /* Bigger screens: 3 per row */
+  @media(min-width:900px){
+    .grid{
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+  }
+
+  /* Card */
+  .card{background:var(--card-bg);border-radius:10px;padding:10px;box-shadow:var(--shadow);position:relative;overflow:hidden;display:flex;flex-direction:column}
+  .badge{position:absolute;left:12px;top:12px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;font-weight:700;font-size:12px}
+  .fav{position:absolute;right:12px;top:12px;width:34px;height:34px;border-radius:8px;background:rgba(0,0,0,0.03);display:flex;align-items:center;justify-content:center;font-size:14px}
+  .img-wrap{width:100%;height:140px;border-radius:8px;overflow:hidden;background:#f6f6f6;display:flex;align-items:center;justify-content:center}
+  .img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+  .title{font-weight:700;margin-top:10px;font-size:15px}
+  .short{color:var(--muted);font-size:12px;margin-top:6px}
+  .price-row{display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px}
+  .mrp{text-decoration:line-through;color:var(--muted);font-size:12px}
+  .price{font-weight:800;color:var(--price);font-size:16px}
+  .discount{font-weight:700;color:var(--accent1);font-size:12px}
+  .how{margin-top:8px;background:#f4f6f7;padding:8px;border-radius:8px;color:#334;font-size:13px}
+  .actions{display:flex;gap:8px;margin-top:10px;align-items:center}
+  .add-btn{flex:1;padding:10px;border-radius:8px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;text-align:center;text-decoration:none;font-weight:800;font-size:14px}
+  .cart-btn{padding:10px;border-radius:8px;background:#fff;border:1px solid rgba(0,0,0,0.06);display:flex;gap:8px;align-items:center;font-size:13px;color:#0b4aa3}
+  /* cart badge */
+  .cart-outer{position:relative}
+  .cart-count{position:absolute;right:-6px;top:-6px;background:#ff3a71;color:#fff;border-radius:999px;padding:3px 7px;font-weight:800;font-size:12px}
+  /* responsive tweaks */
+  @media (max-width:420px){
+    .img-wrap{height:120px}
+    .title{font-size:14px}
+    .price{font-size:15px}
+    .add-btn{padding:9px;font-size:13px}
+  }
+  footer{margin:28px 0;color:var(--muted);font-size:14px;text-align:center}
+
+  /* intro modal */
+  #introModal{position:fixed;inset:0;background:var(--overlay);display:flex;align-items:center;justify-content:center;z-index:9999}
+  #introBox{background:#fff;padding:22px;border-radius:12px;max-width:520px;text-align:center;box-shadow:0 12px 40px rgba(6,20,10,0.25)}
+  #introBox h2{margin:0 0 6px}
+  #introBox p{margin:6px 0 0;color:var(--muted)}
+  #introClose{margin-top:12px;padding:8px 12px;border-radius:8px;border:0;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;font-weight:700}
+</style>
+</head>
+<body>
+  <!-- Intro modal (3 seconds) -->
+  <div id="introModal" aria-hidden="false">
+    <div id="introBox" role="dialog" aria-modal="true">
+      <h2>Thanks for Visiting</h2>
+      <h3 style="margin:6px 0 0">AIO PROFESSIONAL PRODUCT'S</h3>
+      <p class="muted">Welcome! We'll show you our latest products — this message will close in <span id="introSec">3</span>s</p>
+      <button id="introClose" onclick="closeIntro()">Close</button>
+    </div>
+  </div>
+
+  <div class="site">
+    <header>
+      <div class="brand">
+        <div class="logo">AIO</div>
+        <div class="sitename">
+          <div style="font-size:18px">AIO PROFESSIONAL PRODUCT'S</div>
+          <small>Premium product showcase</small>
+        </div>
+      </div>
+
+      <nav>
+        <a class="btn" href="#products">Shop</a>
+        <div style="width:14px"></div>
+        <div class="cart-outer">
+          <a class="cart-btn" href="#cart" id="viewCartLink">Cart 🛒</a>
+          <div id="cartCount" class="cart-count" style="display:none">0</div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Free shipping on orders above ₹499</h1>
+      <p class="muted">Bestsellers & New Arrivals — tap a product to view details or add to bag.</p>
+    </section>
+
+    <h3 class="section-title">Bestsellers</h3>
+    <section id="products" class="grid" aria-live="polite"></section>
+
+    <h3 class="section-title">New Arrivals</h3>
+    <section id="newArrivals" class="grid" aria-live="polite"></section>
+
+    <footer>
+      Contact / Orders — WhatsApp: <strong id="contactNum">9136707577</strong> • Email: <strong id="contactEmail">shaikhsalu227@gmail.com</strong>
+    </footer>
+  </div>
+
+<script>
+/* Intro modal: auto-close after 3 seconds */
+(function(){
+  let sec = 3;
+  const el = document.getElementById('introSec');
+  const modal = document.getElementById('introModal');
+  const interval = setInterval(()=>{ sec--; if(el) el.textContent = sec; if(sec<=0){ clearInterval(interval); closeIntro(); } },1000);
+  window.closeIntro = function(){ if(modal) modal.style.display='none'; };
+})();
+
+/* Cart logic (localStorage) */
+const CART_KEY = 'aio_cart_v1';
+function loadCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); }catch(e){return []} }
+function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); renderCartCount(); }
+function addToCart(product){
+  const cart = loadCart();
+  const found = cart.find(i=>i.id===product.id);
+  if(found){ found.qty = found.qty + 1; }
+  else { cart.push({id:product.id, name:product.name, price:product.price, currency:product.currency||'₹', qty:1}); }
+  saveCart(cart);
+  alert('Added to bag: ' + product.name);
+}
+
+/* render cart count */
+function renderCartCount(){
+  const cart = loadCart();
+  const cnt = cart.reduce((s,i)=>s+i.qty,0);
+  const el = document.getElementById('cartCount');
+  if(cnt>0){ el.style.display='block'; el.textContent = cnt; } else { el.style.display='none'; }
+}
+
+/* fetch products.json and render (smart: no duplicates) */
+async function loadProducts(){
+  try{
+    const res = await fetch('products.json?' + Date.now());
+    const prods = await res.json();
+
+    // Smart logic: prevent duplicates and adapt layout
+    let best = [];
+    let rest = [];
+
+    if (!Array.isArray(prods) || prods.length === 0) {
+      best = [];
+      rest = [];
+    } else if (prods.length <= 4) {
+      best = prods.slice(); // show all in bestsellers
+      rest = [];
+    } else {
+      best = prods.slice(0, 4); // first 4 in bestsellers
+      rest = prods.slice(4);    // remaining in new arrivals
+    }
+
+    renderGrid('products', best);
+    renderGrid('newArrivals', rest);
+  }catch(e){
+    console.error('Load products failed', e);
+    document.getElementById('products').innerHTML = '<div style="color:#666">Products not available. Upload products.json and images folder.</div>';
+    document.getElementById('newArrivals').innerHTML = '';
+  }
+}
+
+/* create discount percent helper */
+function getDiscount(mrp, price){
+  if(!mrp || mrp<=price) return 0;
+  const d = Math.round(((mrp - price) / mrp) * 100);
+  return d;
+}
+
+/* render grid into targetId (safe rendering) */
+function renderGrid(targetId, arr){
+  const container = document.getElementById(targetId);
+  container.innerHTML = '';
+  if(!Array.isArray(arr) || arr.length === 0){
+    // if no items, keep empty message for products or nothing
+    if (targetId === 'products') container.innerHTML = '<div style="color:#888;font-size:14px;padding:6px">Products not available. Upload products.json and images folder.</div>';
+    return;
+  }
+
+  arr.forEach(p=>{
+    const card = document.createElement('div'); card.className='card';
+    const discount = getDiscount(p.mrp || p.price, p.price);
+    const badgeText = p.badge || (discount>0 ? `Sale ${discount}% OFF` : 'New');
+    const imagePath = p.image || 'images/placeholder.jpg';
+    card.innerHTML = `
+      <div class="badge">${badgeText}</div>
+      <div class="fav">♡</div>
+      <div class="img-wrap"><img src="${imagePath}" alt="${escapeHtml(p.name)}"></div>
+      <div class="title">${escapeHtml(p.name)}</div>
+      <div class="short">${escapeHtml(p.short || '')}</div>
+      <div class="price-row">
+        <div>
+          <div class="mrp">${p.mrp ? 'MRP: ' + (p.currency||'₹') + p.mrp : ''}</div>
+          <div class="price">${p.currency||'₹'} ${p.price}</div>
+        </div>
+        <div class="discount">${discount>0? discount+'% off' : ''}</div>
+      </div>
+      <div class="how"><strong>How to use</strong><div style="margin-top:6px">${escapeHtml(p.how || '')}</div></div>
+      <div class="actions">
+        <a href="javascript:void(0)" class="add-btn" onclick='addToCartById("${p.id}")'>ADD TO BAG</a>
+        <a class="cart-btn" href="https://wa.me/91${document.getElementById('contactNum').textContent.trim()}?text=${encodeURIComponent('I want to order: '+p.name+' | Price: '+ (p.currency||'₹')+p.price)}" target="_blank">Order</a>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+/* helper: add to cart by product id */
+async function addToCartById(id){
+  try{
+    const res = await fetch('products.json?' + Date.now());
+    const prods = await res.json();
+    const p = prods.find(x=>x.id===id);
+    if(p) addToCart(p);
+    else alert('Product not found');
+  }catch(e){
+    alert('Unable to add. Products data not available.');
+  }
+}
+
+/* small escape helper */
+function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+
+/* On load */
+renderCartCount();
+loadProducts();
+</script>
+</body>
+  </html>
