@@ -1,0 +1,24 @@
+[
+  {
+    "id": "p001",
+    "name": "Hoor Aloe Vera Scrub Face Wash",
+    "short": "De-tan & Detoxify — 100ml",
+    "price": 199,
+    "mrp": 299,
+    "currency": "₹",
+    "image": "images/product.jpg",
+    "how": "Apply on wet face, gently scrub, rinse with water.",
+    "badge": "Bestseller"
+  },
+  {
+    "id": "p002",
+    "name": "Demo Product (images2)",
+    "short": "Demo sample — 100ml",
+    "price": 149,
+    "mrp": 199,
+    "currency": "₹",
+    "image": "images/images2.jpg",
+    "how": "Demo: apply and rinse.",
+    "badge": "New"
+  }
+]
